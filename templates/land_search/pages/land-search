@@ -1,0 +1,180 @@
+{% extends 'land_search/base' %}
+
+{% load static %}
+
+{% block page_content %}
+ <div class="container p-3 p-lg-5">
+    <div class="row mb-4">
+        <div class="col-md-2 mb-3"><img src="{% static 'land_search/images/pdb.png' %}" height="72px"></div>
+        <div class="col-md-10 mb-3"><h3><u>LAND SEARCH FORM</u></h3></div>
+    </div>
+
+    <form id="land-search-form" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-8 mb-3"><input id="land_location" name="land_location" type="text" class="form-control" placeholder="Location of Land" aria-label="Location of Land"></div>
+            <div class="col-md-4 mb-3">
+                <select class="form-control" id="region" name="region">
+                    <option value="" disabled selected>Select a region</option>
+                    <option value="AHAFO">Ahafo</option>
+                    <option value="ASHANTI">Ashanti</option>
+                    <option value="BONO EAST">Bono East</option>
+                    <option value="BRONG AHAFO">Brong Ahafo</option>
+                    <option value="CENTRAL">Central</option>
+                    <option value="EASTERN">Eastern</option>
+                    <option value="GREATER ACCRA">Greater Accra</option>
+                    <option value="NORTH EAST">North East</option>
+                    <option value="NORTHERN">Northern</option>
+                    <option value="OTI">Oti</option>
+                    <option value="SAVANNAH">Savannah</option>
+                    <option value="UPPER EAST">Upper East</option>
+                    <option value="UPPER WEST">Upper West</option>
+                    <option value="WESTERN">Western</option>
+                    <option value="WESTERN NORTH">Western North</option>
+                    <option value="VOLTA">Volta</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3"><input id="district" name="district" type="text" class="form-control" placeholder="District" aria-label="Land Size"></div>
+            <div class="col-md-4 mb-3"><input id="land_size" name="land_size" type="text" class="form-control" placeholder="Land Size" aria-label="Land Size"></div>
+            <div class="col-md-4 mb-3"><input id="land_price" name="land_price" type="text" class="form-control" placeholder="Land Price In the Area" aria-label="Land Price in the Area"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 mb-3"><input id="owner_name" name="owner_name" type="text" class="form-control" placeholder="Name of Owner" aria-label="Name of Owner"></div>
+            <div class="col-md-4 mb-3"><input id="phone_number" name="phone_number" type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number"></div>
+        </div>
+
+        <div class="bg-danger mb-4 mt-2">
+            <h6 class="p-2 p-lg-4 text-light">PLEASE PROVIDE NAMES OF ALL MEMBERS OF THE LAND OWNING GROUP THAT MUST ENDORSE A LAND TRANSACTION IN THR AREA</h6>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3"><input id="member_1_name" name="member_1_name" type="text" class="form-control" placeholder="1." aria-label="1."></div>
+            <div class="col-md-6 mb-3"><input id="member_2_name" name="member_2_name" type="text" class="form-control" placeholder="2." aria-label="2."></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3"><input id="member_3_name" name="member_3_name" type="text" class="form-control" placeholder="3." aria-label="3."></div>
+            <div class="col-md-6 mb-3"><input id="member_4_name" name="member_4_name" type="text" class="form-control" placeholder="4." aria-label="4."></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3"><input id="member_5_name" name="member_5_name" type="text" class="form-control" placeholder="5." aria-label="5."></div>
+            <div class="col-md-6 mb-3"><input id="member_6_name" name="member_6_name" type="text" class="form-control" placeholder="6." aria-label="6."></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3"><input id="member_7_name" name="member_7_name" type="text" class="form-control" placeholder="7." aria-label="7."></div>
+            <div class="col-md-6 mb-3"><input id="member_8_name" name="member_8_name" type="text" class="form-control" placeholder="8." aria-label="8."></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3"><input id="member_9_name" name="member_9_name" type="text" class="form-control" placeholder="9." aria-label="9."></div>
+            <div class="col-md-6 mb-3"><input id="member_10_name" name="member_10_name" type="text" class="form-control" placeholder="10." aria-label="10."></div>
+        </div>
+
+        <div class="bg-danger mb-4 mt-2">
+            <h6 class="p-2 p-lg-4 text-light">LAND INFORMATION</h6>
+        </div>        
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="is_land_registered" class="form-label">Has The Land Been Registered Yes</label>
+                <select id="is_land_registered" name="is_land_registered" class="form-select">
+                    <option value="true" selected>Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="registration_evidence" class="form-label">Evidence Of Registration</label>
+                <input type="file" class="form-control" id="registration_evidence" name="registration_evidence">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="is_there_a_modern_site_plan" class="form-label">Is There A Modern Site Plan</label>
+                <select id="is_there_a_modern_site_plan" name="is_there_a_modern_site_plan" class="form-select">
+                    <option value="true" selected>Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="has_existing_ownership_dispute" class="form-label">Is There Ownership Dispute</label>
+                <select id="has_existing_ownership_dispute" name="has_existing_ownership_dispute" class="form-select">
+                    <option value="true" selected>Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+        </div>    
+        
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="is_open_to_share_cropping" class="form-label">Is Landlord Open To Share Cropping</label>
+                <select id="is_open_to_share_cropping" name="is_open_to_share_cropping" class="form-select">
+                    <option value="true" selected>Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="is_open_to_partnership" class="form-label">Is Landlord Open To Partnership</label>
+                <select id="is_open_to_partnership" name="is_open_to_partnership" class="form-select">
+                    <option value="true" selected>Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+        </div> 
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="has_active_lease" class="form-label">Is There An Active Lease Or License Over The Land</label>
+                <select id="has_active_lease" name="has_active_lease" class="form-select">
+                    <option value="true" selected>Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="is_open_to_proceeds" class="form-label">Is Landlord Open To Proceeds From Sale Of Entitled Portion of The Produce</label>
+                <select id="is_open_to_proceeds" name="is_open_to_proceeds" class="form-select">
+                    <option value="true" selected>Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+        </div> 
+        
+        <div class="row">
+            <div class="col-md-6">
+                <label for="current_land_use" class="form-label">Has The Land Been Registered Yes</label>
+                <textarea id="current_land_use" name="current_land_use" class="form-control"></textarea>
+            </div>
+        </div>
+
+        <div class="bg-danger mb-4 mt-4">
+            <h6 class="p-2 p-lg-4 text-light">STAFF MEMBER</h6>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="staff_full_name" class="form-label">Member Name</label>
+                <input id="staff_full_name" name="staff_full_name" class="form-control" type="text" placeholder="Member Name">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="staff_phone_number" class="form-label">Member Phone</label>
+                <input id="staff_phone_number" name="staff_phone_number" class="form-control" type="text" placeholder="Member Phone">
+            </div>
+        </div>
+
+        <div class="d-block my-3 d-lg-none">
+            <button class="btn btn-danger w-100">SUBMIT</button>
+        </div>
+
+        <div class="my-2 mt-lg-4 d-none d-lg-block">
+            <button class="btn btn-danger w-50">SUBMIT</button>
+        </div>
+    </form>
+ </div>
+
+ 
+
+{% endblock page_content %}
